@@ -1,0 +1,141 @@
+﻿html {
+  min-width: 960px;
+  font-family: 'Lobster', cursive;
+}
+body {
+  background: url(Img/main-bg.png) 50% 0 no-repeat;
+  background-color: #080808;
+}
+#wrapper {
+  width: 960px;
+  margin: 0 auto;
+}
+.logo {
+  margin: 0 auto;
+  width: 450px;
+  margin-top: 53px;
+}
+.logo img {
+  height: 50px;
+  float: left;
+  margin-right: 30px;
+}
+#myCarousel {
+  margin: 0 auto;
+  margin-top: 15px;
+  width: 700px;
+}
+#myCarousel h2 {
+  margin: 0;
+  color: #666;
+}
+#myCarousel .item {
+  background: #333;
+  text-align: center;
+  height: 300px !important;
+}
+#myCarousel .carousel {
+  margin-top: 20px;
+}
+#myCarousel .carousel-control img {
+  margin-top: 120px;
+}
+#myCarousel .carousel-control.left img {
+  margin-left: -86px;
+}
+#myCarousel .carousel-control.right img {
+  margin-right: -86px;
+}
+#custom-bootstrap-menu.navbar-default .navbar-brand {
+  color: #777777;
+}
+#custom-bootstrap-menu.navbar-default {
+  font-size: 14px;
+  background-color: #a8a8a8;
+  background: -webkit-linear-gradient(top, #e3dfdf 0%, #a8a8a8 100%);
+  background: linear-gradient(to bottom, #e3dfdf 0%, #a8a8a8 100%);
+  border-width: 1px;
+  border-radius: 4px;
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav > li > a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav > li > a:focus {
+  color: #333333;
+  background-color: #adadad;
+  background: -webkit-linear-gradient(top, #8f8f8f 0%, #adadad 100%);
+  background: linear-gradient(to bottom, #8f8f8f 0%, #adadad 100%);
+}
+nav {
+  margin-top: 48px;
+  margin-right: 90px;
+  margin-left: 90px;
+}
+nav a {
+  border-right: 1px solid rgba(0, 0, 0, 0.25);
+  margin-top: 2px;
+}
+nav a:first-child {
+  border-left: 1px solid rgba(0, 0, 0, 0.25);
+}
+.nav > li > a {
+  padding: 10px 61px;
+}
+footer {
+  background: url(Img/footer-bg.png) 50% 0 no-repeat;
+  height: 85px;
+  color: #bebebe;
+  text-shadow: 1px 1px black;
+}
+footer div {
+  padding-top: 35px;
+  padding-left: 200px;
+}
+footer div .desc {
+  display: block;
+  float: left;
+  text-align: center;
+}
+footer div .phone {
+  display: block;
+  float: left;
+  font-size: 28px;
+  margin-top: 0px;
+  margin-left: 20px;
+  color: lightgray;
+}
+footer div .mail {
+  display: block;
+  float: left;
+  font-size: 18px;
+  margin-left: 20px;
+  margin-top: 7px;
+  color: lightgray;
+}
+footer div .other {
+  display: block;
+  float: left;
+  font-size: 18px;
+  margin-left: 20px;
+  margin-top: 7px;
+}
+footer div .odnoklassniki {
+  width: 40px;
+  height: 40px;
+  display: block;
+  text-indent: -9999px;
+  background: url(Img/social-icon.png) 0 0 no-repeat;
+  float: left;
+  margin-right: 6px;
+  margin-left: 8px;
+  margin-top: 5px;
+}
+footer div .vkontakte {
+  width: 40px;
+  height: 40px;
+  display: block;
+  text-indent: -9999px;
+  background: url(Img/social-icon.png) 0 -40px no-repeat;
+  float: left;
+  margin-right: 6px;
+  margin-left: 3px;
+  margin-top: 5px;
+}
