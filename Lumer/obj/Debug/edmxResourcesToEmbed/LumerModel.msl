@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище LumerModelContainer" CdmEntityContainer="LumerEntities">
+    <EntitySetMapping Name="Film">
+      <EntityTypeMapping TypeName="LumerModel.Film">
+        <MappingFragment StoreEntitySet="Film">
+          <ScalarProperty Name="FilmID" ColumnName="FilmID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Genre" ColumnName="Genre" />
+          <ScalarProperty Name="Actors" ColumnName="Actors" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PosterName" ColumnName="PosterName" />
+          <ScalarProperty Name="KadrName1" ColumnName="KadrName1" />
+          <ScalarProperty Name="KadrName2" ColumnName="KadrName2" />
+          <ScalarProperty Name="KadrName3" ColumnName="KadrName3" />
+          <ScalarProperty Name="KadrName4" ColumnName="KadrName4" />
+          <ScalarProperty Name="KadrName5" ColumnName="KadrName5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Plase">
+      <EntityTypeMapping TypeName="LumerModel.Plase">
+        <MappingFragment StoreEntitySet="Plase">
+          <ScalarProperty Name="PlaseID" ColumnName="PlaseID" />
+          <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+          <ScalarProperty Name="Row" ColumnName="Row" />
+          <ScalarProperty Name="Col" ColumnName="Col" />
+          <ScalarProperty Name="PriseNum" ColumnName="PriseNum" />
+          <ScalarProperty Name="State" ColumnName="State" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schedule">
+      <EntityTypeMapping TypeName="LumerModel.Schedule">
+        <MappingFragment StoreEntitySet="Schedule">
+          <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="FilmID" ColumnName="FilmID" />
+          <ScalarProperty Name="Prise1" ColumnName="Prise1" />
+          <ScalarProperty Name="Prise2" ColumnName="Prise2" />
+          <ScalarProperty Name="Prise3" ColumnName="Prise3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetFilmOnWeek" FunctionName="Хранилище LumerModel.GetFilmOnWeek">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LumerModel.GetFilmOnWeek_Result">
+          <ScalarProperty Name="FilmId" ColumnName="FilmId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Genre" ColumnName="Genre" />
+          <ScalarProperty Name="Actors" ColumnName="Actors" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PosterName" ColumnName="PosterName" />
+          <ScalarProperty Name="KadrName1" ColumnName="KadrName1" />
+          <ScalarProperty Name="KadrName2" ColumnName="KadrName2" />
+          <ScalarProperty Name="KadrName3" ColumnName="KadrName3" />
+          <ScalarProperty Name="KadrName4" ColumnName="KadrName4" />
+          <ScalarProperty Name="KadrName5" ColumnName="KadrName5" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

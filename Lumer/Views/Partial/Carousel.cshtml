@@ -1,0 +1,47 @@
+﻿@using Lumer.Models
+@model System.Collections.Generic.List<Lumer.Models.CarouselModel>
+
+<!-- Карусель -->
+<div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+    <!-- Индикаторы для карусели -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        @{
+            for (int i = 0; i < Model.Count - 1; i++)
+            {
+                <li data-target="#myCarousel" data-slide-to="@(i+1)"></li>
+            }
+        }
+    </ol>
+
+    <!-- Слайды карусели -->
+    <div class="carousel-inner">
+        @{
+            <div class="item active">
+                <a href="@Url.Action("Index", "Film", new {id = Model[0].FilmId}, null)">
+                    <img src="~/Content/Films/@Model[0].FileName" />
+                </a>
+            </div>
+
+            for (int i = 1; i < Model.Count; i++)
+            {
+                <div class="item">
+                    <a href="@Url.Action("Index", "Film", new {id = Model[i].FilmId}, null)">
+                        <img src="~/Content/Films/@Model[i].FileName" />
+                    </a>
+                </div>
+            }
+
+        }
+    </div>
+
+
+    <!-- Навигация для карусели -->
+    <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+        <img src="../../Content/Img/SliderLeftBtn.png" alt="" />
+    </a>
+    <a class="carousel-control right" href="#myCarousel" data-slide="next">
+        <img src="../../Content/Img/SliderRightBtn.png" alt="" />
+    </a>
+
+</div>

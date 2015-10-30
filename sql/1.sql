@@ -52,7 +52,7 @@ CREATE TABLE Schedule
 ALTER TABLE Schedule  WITH CHECK ADD  CONSTRAINT [FK_Schedule_FilmID] FOREIGN KEY(FilmID)
 REFERENCES Film(FilmID)
 GO
-
+                                                         DR
 
 
 INSERT Schedule (Time,FilmID,Prise1,Prise2,Prise3) VALUES
@@ -99,21 +99,21 @@ INSERT Schedule (Time,FilmID,Prise1,Prise2,Prise3) VALUES
 ('30.10.2015 20:00:00.000',3,100.0,60.0,40.0),
 ('30.10.2015 22:00:00.000',4,100.0,60.0,40.0),
 
-('01.10.2015 10:00:00.000',1,100.0,60.0,40.0),
-('01.10.2015 12:00:00.000',2,100.0,60.0,40.0),
-('01.10.2015 14:00:00.000',3,100.0,60.0,40.0),
-('01.10.2015 16:00:00.000',1,100.0,60.0,40.0),
-('01.10.2015 18:00:00.000',2,100.0,60.0,40.0),
-('01.10.2015 20:00:00.000',3,100.0,60.0,40.0),
-('01.10.2015 22:00:00.000',4,100.0,60.0,40.0),
+('31.10.2015 10:00:00.000',1,100.0,60.0,40.0),
+('31.10.2015 12:00:00.000',2,100.0,60.0,40.0),
+('31.10.2015 14:00:00.000',3,100.0,60.0,40.0),
+('31.10.2015 16:00:00.000',1,100.0,60.0,40.0),
+('31.10.2015 18:00:00.000',2,100.0,60.0,40.0),
+('31.10.2015 20:00:00.000',3,100.0,60.0,40.0),
+('31.10.2015 22:00:00.000',4,100.0,60.0,40.0),
 
-('02.10.2015 10:00:00.000',7,100.0,60.0,40.0),
-('02.10.2015 12:00:00.000',6,100.0,60.0,40.0),
-('02.10.2015 14:00:00.000',5,100.0,60.0,40.0),
-('02.10.2015 16:00:00.000',7,100.0,60.0,40.0),
-('02.10.2015 18:00:00.000',6,100.0,60.0,40.0),
-('02.10.2015 20:00:00.000',5,100.0,60.0,40.0),
-('02.10.2015 22:00:00.000',1,100.0,60.0,40.0);
+('01.11.2015 10:00:00.000',7,100.0,60.0,40.0),
+('01.11.2015 12:00:00.000',6,100.0,60.0,40.0),
+('01.11.2015 14:00:00.000',5,100.0,60.0,40.0),
+('01.11.2015 16:00:00.000',7,100.0,60.0,40.0),
+('01.11.2015 18:00:00.000',6,100.0,60.0,40.0),
+('01.11.2015 20:00:00.000',5,100.0,60.0,40.0),
+('01.11.2015 22:00:00.000',1,100.0,60.0,40.0);
 
 Create table Plase
 (
@@ -129,6 +129,23 @@ Create table Plase
 ALTER TABLE Plase  WITH CHECK ADD  CONSTRAINT [FK_Plase_ScheduleID] FOREIGN KEY(ScheduleID)
 REFERENCES Schedule(ScheduleID)
 GO
+
+
+
+
+--DROP PROC GetFilmOnWeek
+CREATE PROC GetFilmOnWeek
+@WeekStart		DATE,
+@WeekEnd		DATE
+AS
+
+ SELECT f.FilmId,f.Name,f.Genre,f.Actors,f.Country,f.Year,f.Duration, f.Description,
+	f.PosterName,f.KadrName1,f.KadrName2,f.KadrName3,f.KadrName4,f.KadrName5 
+	FROM Schedule s JOIN Film f ON s.FilmId=f.filmId
+	WHERE CONVERT(DATE,S.Time)>=@WeekStart AND CONVERT(DATE,S.Time)<=@WeekEnd
+	GROUP BY f.FilmId,f.Name,f.Genre,f.Actors,f.Country,f.Year,f.Duration, f.Description,
+	f.PosterName,f.KadrName1,f.KadrName2,f.KadrName3,f.KadrName4,f.KadrName5
+
 
 
 

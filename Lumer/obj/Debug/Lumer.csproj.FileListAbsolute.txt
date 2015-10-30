@@ -35,6 +35,9 @@ D:\Projects\Lumer\Lumer\bin\System.Web.WebPages.Deployment.xml
 D:\Projects\Lumer\Lumer\bin\System.Web.WebPages.Razor.xml
 D:\Projects\Lumer\Lumer\bin\Antlr3.Runtime.pdb
 D:\Projects\Lumer\Lumer\bin\Newtonsoft.Json.xml
-D:\Projects\Lumer\Lumer\obj\Debug\Lumer.csprojResolveAssemblyReference.cache
 D:\Projects\Lumer\Lumer\obj\Debug\Lumer.dll
 D:\Projects\Lumer\Lumer\obj\Debug\Lumer.pdb
+D:\Projects\Lumer\Lumer\bin\EntityFramework.dll
+D:\Projects\Lumer\Lumer\bin\EntityFramework.SqlServer.dll
+D:\Projects\Lumer\Lumer\bin\EntityFramework.xml
+D:\Projects\Lumer\Lumer\bin\EntityFramework.SqlServer.xml

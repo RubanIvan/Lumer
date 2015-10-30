@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище LumerModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Film">
+          <Key>
+            <PropertyRef Name="FilmID" />
+          </Key>
+          <Property Name="FilmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="Genre" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="Actors" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="Year" Type="date" />
+          <Property Name="Duration" Type="time" Precision="7" />
+          <Property Name="Description" Type="varchar" MaxLength="1024" />
+          <Property Name="PosterName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="KadrName1" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="KadrName2" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="KadrName3" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="KadrName4" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="KadrName5" Type="varchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Plase">
+          <Key>
+            <PropertyRef Name="PlaseID" />
+          </Key>
+          <Property Name="PlaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ScheduleID" Type="int" />
+          <Property Name="Row" Type="int" />
+          <Property Name="Col" Type="int" />
+          <Property Name="PriseNum" Type="int" />
+          <Property Name="State" Type="int" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="ScheduleID" />
+          </Key>
+          <Property Name="ScheduleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="FilmID" Type="int" />
+          <Property Name="Prise1" Type="real" />
+          <Property Name="Prise2" Type="real" />
+          <Property Name="Prise3" Type="real" />
+        </EntityType>
+        <Association Name="FK_Plase_ScheduleID">
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="0..1" />
+          <End Role="Plase" Type="Self.Plase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedule">
+              <PropertyRef Name="ScheduleID" />
+            </Principal>
+            <Dependent Role="Plase">
+              <PropertyRef Name="ScheduleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_FilmID">
+          <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Film">
+              <PropertyRef Name="FilmID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="FilmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetFilmOnWeek" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WeekStart" Type="date" Mode="In" />
+          <Parameter Name="WeekEnd" Type="date" Mode="In" />
+        </Function>
+        <EntityContainer Name="Хранилище LumerModelContainer">
+          <EntitySet Name="Film" EntityType="Self.Film" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plase" EntityType="Self.Plase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Plase_ScheduleID" Association="Self.FK_Plase_ScheduleID">
+            <End Role="Schedule" EntitySet="Schedule" />
+            <End Role="Plase" EntitySet="Plase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_FilmID" Association="Self.FK_Schedule_FilmID">
+            <End Role="Film" EntitySet="Film" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LumerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Film">
+          <Key>
+            <PropertyRef Name="FilmID" />
+          </Key>
+          <Property Name="FilmID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Genre" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Actors" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="DateTime" Precision="0" />
+          <Property Name="Duration" Type="Time" Precision="7" />
+          <Property Name="Description" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="PosterName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="KadrName1" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="KadrName2" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="KadrName3" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="KadrName4" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="KadrName5" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Schedule" Relationship="Self.FK_Schedule_FilmID" FromRole="Film" ToRole="Schedule" />
+        </EntityType>
+        <EntityType Name="Plase">
+          <Key>
+            <PropertyRef Name="PlaseID" />
+          </Key>
+          <Property Name="PlaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScheduleID" Type="Int32" />
+          <Property Name="Row" Type="Int32" />
+          <Property Name="Col" Type="Int32" />
+          <Property Name="PriseNum" Type="Int32" />
+          <Property Name="State" Type="Int32" />
+          <NavigationProperty Name="Schedule" Relationship="Self.FK_Plase_ScheduleID" FromRole="Plase" ToRole="Schedule" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="ScheduleID" />
+          </Key>
+          <Property Name="ScheduleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="FilmID" Type="Int32" />
+          <Property Name="Prise1" Type="Single" />
+          <Property Name="Prise2" Type="Single" />
+          <Property Name="Prise3" Type="Single" />
+          <NavigationProperty Name="Film" Relationship="Self.FK_Schedule_FilmID" FromRole="Schedule" ToRole="Film" />
+          <NavigationProperty Name="Plase" Relationship="Self.FK_Plase_ScheduleID" FromRole="Schedule" ToRole="Plase" />
+        </EntityType>
+        <Association Name="FK_Schedule_FilmID">
+          <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Film">
+              <PropertyRef Name="FilmID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="FilmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plase_ScheduleID">
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="0..1" />
+          <End Role="Plase" Type="Self.Plase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedule">
+              <PropertyRef Name="ScheduleID" />
+            </Principal>
+            <Dependent Role="Plase">
+              <PropertyRef Name="ScheduleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LumerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Film" EntityType="Self.Film" />
+          <EntitySet Name="Plase" EntityType="Self.Plase" />
+          <EntitySet Name="Schedule" EntityType="Self.Schedule" />
+          <AssociationSet Name="FK_Schedule_FilmID" Association="Self.FK_Schedule_FilmID">
+            <End Role="Film" EntitySet="Film" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plase_ScheduleID" Association="Self.FK_Plase_ScheduleID">
+            <End Role="Schedule" EntitySet="Schedule" />
+            <End Role="Plase" EntitySet="Plase" />
+          </AssociationSet>
+          <FunctionImport Name="GetFilmOnWeek" ReturnType="Collection(LumerModel.GetFilmOnWeek_Result)">
+            <Parameter Name="WeekStart" Mode="In" Type="DateTime" />
+            <Parameter Name="WeekEnd" Mode="In" Type="DateTime" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetFilmOnWeek_Result">
+          <Property Type="Int32" Name="FilmId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="Genre" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="Actors" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Year" Nullable="true" />
+          <Property Type="Time" Name="Duration" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="1024" />
+          <Property Type="String" Name="PosterName" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="KadrName1" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="KadrName2" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="KadrName3" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="KadrName4" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="KadrName5" Nullable="false" MaxLength="256" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище LumerModelContainer" CdmEntityContainer="LumerEntities">
+          <EntitySetMapping Name="Film">
+            <EntityTypeMapping TypeName="LumerModel.Film">
+              <MappingFragment StoreEntitySet="Film">
+                <ScalarProperty Name="FilmID" ColumnName="FilmID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="Actors" ColumnName="Actors" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PosterName" ColumnName="PosterName" />
+                <ScalarProperty Name="KadrName1" ColumnName="KadrName1" />
+                <ScalarProperty Name="KadrName2" ColumnName="KadrName2" />
+                <ScalarProperty Name="KadrName3" ColumnName="KadrName3" />
+                <ScalarProperty Name="KadrName4" ColumnName="KadrName4" />
+                <ScalarProperty Name="KadrName5" ColumnName="KadrName5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plase">
+            <EntityTypeMapping TypeName="LumerModel.Plase">
+              <MappingFragment StoreEntitySet="Plase">
+                <ScalarProperty Name="PlaseID" ColumnName="PlaseID" />
+                <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+                <ScalarProperty Name="Row" ColumnName="Row" />
+                <ScalarProperty Name="Col" ColumnName="Col" />
+                <ScalarProperty Name="PriseNum" ColumnName="PriseNum" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedule">
+            <EntityTypeMapping TypeName="LumerModel.Schedule">
+              <MappingFragment StoreEntitySet="Schedule">
+                <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="FilmID" ColumnName="FilmID" />
+                <ScalarProperty Name="Prise1" ColumnName="Prise1" />
+                <ScalarProperty Name="Prise2" ColumnName="Prise2" />
+                <ScalarProperty Name="Prise3" ColumnName="Prise3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetFilmOnWeek" FunctionName="Хранилище LumerModel.GetFilmOnWeek">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LumerModel.GetFilmOnWeek_Result">
+                <ScalarProperty Name="FilmId" ColumnName="FilmId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="Actors" ColumnName="Actors" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PosterName" ColumnName="PosterName" />
+                <ScalarProperty Name="KadrName1" ColumnName="KadrName1" />
+                <ScalarProperty Name="KadrName2" ColumnName="KadrName2" />
+                <ScalarProperty Name="KadrName3" ColumnName="KadrName3" />
+                <ScalarProperty Name="KadrName4" ColumnName="KadrName4" />
+                <ScalarProperty Name="KadrName5" ColumnName="KadrName5" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
